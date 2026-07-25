@@ -1,0 +1,19 @@
+# Acoustic Sense — agregar al .gitignore existente
+
+/analysis/.venv/
+/analysis/**/__pycache__/
+*.pyc
+
+/test-data/recordings/*
+!/test-data/recordings/.gitkeep
+*.wav
+*.pcm
+*.raw
+*.npy
+*.npz
+
+/exports/
+/experiment-output/
+.ipynb_checkpoints/
+*.local.json
+*.local.csv

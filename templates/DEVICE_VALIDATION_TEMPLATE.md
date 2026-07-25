@@ -1,0 +1,23 @@
+# Validación de dispositivo
+
+- Fabricante:
+- Modelo:
+- Android:
+- Commit:
+- Sample rate:
+- Frames por burst:
+- Entradas:
+- Salidas:
+- Canales:
+- Raw/unprocessed:
+- Efectos:
+- Banda útil:
+- Orientación:
+- Funda:
+- Volumen:
+- Full-duplex:
+- Calibración:
+- Pared:
+- Zonas:
+- Estado:
+- Restricciones:
