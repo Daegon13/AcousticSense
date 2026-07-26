@@ -18,3 +18,8 @@ local.properties
 !/test-data/recordings/.gitkeep
 /experiment-output/
 /exports/
+/analysis/output/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/

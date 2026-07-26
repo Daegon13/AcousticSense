@@ -8,6 +8,13 @@ Todo resultado debe relacionarse con commit, dispositivo, configuración, datos,
 
 Variar distancia, ruido, amplitud, ecos secundarios, absorción y sample rate.
 
+Implementado en `analysis/` con semillas configurables. La matriz automatizada
+incluye 0,50 m, 1,00 m, 2,00 m, ruido moderado, baja amplitud, múltiples ecos,
+trayectoria directa fuerte y ausencia de eco. La tolerancia de recuperación es
+0,005 m para las distancias nominales con la configuración de prueba. Registrar
+sample rate, velocidad del sonido, semilla y parámetros de cada nueva serie; los
+resultados sintéticos no habilitan por sí solos pruebas de movilidad.
+
 ## Experimento 2 — Respuesta del teléfono
 
 Registrar espectro emitido y grabado, clipping, compresión, ruido, efectos y estabilidad.

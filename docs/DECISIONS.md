@@ -31,3 +31,10 @@ Aceptada durante PoC y MVP.
 ## ADR-008 — Distancia o zonas
 
 Abierta. Se decidirá con evidencia.
+
+## ADR-009 — Filtro adaptado sintético
+
+Aceptada para la fase de DSP sintético: correlación cruzada normalizada, guard
+interval para excluir la trayectoria directa y primer pico candidato que supere
+un umbral experimental explícito. La confianza es un score de semejanza, no una
+probabilidad calibrada. La selección para audio real permanece sujeta a evidencia.

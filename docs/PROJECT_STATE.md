@@ -16,11 +16,14 @@ Fecha base: 25 de julio de 2026.
 - Recolección de datos de sistema, aplicación y dispositivos de audio declarados por Android.
 - Exportación explícita del diagnóstico como JSON mediante el selector de documentos del sistema.
 - Pruebas unitarias de serialización y formateo agregadas.
+- Laboratorio Python de DSP sintético agregado: chirp configurable, simulación de
+  múltiples ecos y ruido, filtro adaptado, estimación de distancia, métricas,
+  gráfica reproducible y pruebas automatizadas.
 
 ## Todavía no realizado
 
-- Motor acústico.
-- Chirp.
+- Motor acústico en Android.
+- Chirp emitido o capturado por hardware real.
 - Grabación funcional.
 - C++/NDK/Oboe.
 - Algoritmo de distancia.
@@ -30,12 +33,13 @@ Fecha base: 25 de julio de 2026.
 - Validación con usuarios.
 - Validación del diagnóstico en teléfonos físicos.
 
-## Próximo PR 
+## Próximo PR
 
-Validar `feat/device-diagnostics` en Android Studio y al menos un teléfono físico, sin
-considerar el dispositivo acústicamente compatible por este diagnóstico.
+Validar el laboratorio sintético y, solo después de mantener los gates, preparar
+la fase de captura básica definida por el plan. La emisión, captura y detección
+acústica en teléfonos siguen sin validación física.
 
-Prompt: `prompts/codex/02_device_diagnostics.md`.
+Prompt actual completado: `prompts/codex/03_synthetic_dsp.md`.
 
 ## Condición para avanzar habilitada
 

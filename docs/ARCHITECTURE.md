@@ -36,7 +36,16 @@ Chirp, ventanas, filtrado, correlación, rechazo directo, picos, compensación, 
 
 ## Python
 
-Carga de WAV/PCM, reproducción offline, gráficas, comparación con ground truth y métricas.
+El laboratorio modular en `analysis/` contiene generación de chirp, simulación de
+trayectorias sintéticas, correlación normalizada, detección, conversión de retardo
+a distancia, métricas y gráficas. El script CLI solo orquesta esos módulos. La
+carga de WAV/PCM real queda diferida.
+
+Para la fase sintética se selecciona un filtro adaptado mediante correlación
+cruzada normalizada. Un guard interval configurable rechaza la trayectoria
+directa; se busca el primer pico candidato y se informa explícitamente ausencia
+de eco cuando no supera el umbral experimental. La confianza es semejanza
+normalizada, no una probabilidad ni garantía de funcionamiento físico.
 
 ## Concurrencia
 
