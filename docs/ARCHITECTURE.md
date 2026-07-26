@@ -26,6 +26,32 @@ UI / vibración
 
 Permisos, lifecycle, controles, diagnóstico, TalkBack, almacenamiento y exportación.
 
+### Captura básica Android (fase 3)
+
+```text
+CaptureScreen (Compose)
+        ↓ acciones / estado resumido
+CaptureViewModel
+        ↓ interfaz reemplazable
+AudioCaptureEngine
+        ↓ implementación Android en ejecutor único
+AudioRecord (mono, PCM 16, 48 kHz solicitados)
+        ↓ bloques reutilizables
+AudioMetrics → pico, RMS, dBFS, muestras y duración
+```
+
+`MicrophonePermissionManager` separa la evaluación del permiso de la UI. El
+motor mantiene un único dueño de `AudioRecord`, lee fuera del hilo principal,
+limita las publicaciones a aproximadamente 10 Hz y libera el recurso al parar,
+ante errores y al cerrar el `ViewModel`. Pasar la aplicación a segundo plano
+detiene la sesión. La interfaz permite reemplazar el motor por uno falso en JVM.
+
+La configuración solicitada no se presenta como garantía: se intenta 48 kHz,
+mono y PCM 16; `UNPROCESSED` solo se intenta si Android declara soporte y `MIC`
+es el fallback. La pantalla informa fuente finalmente seleccionada, propiedades
+reales del `AudioRecord` y buffer usado. Esta capa no reproduce audio, no guarda
+muestras y no realiza ranging.
+
 ## Motor de audio
 
 Streams, formatos, sample rate, callbacks, timestamps, buffers, xruns y cierre.

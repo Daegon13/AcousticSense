@@ -33,6 +33,7 @@ import com.example.acousticsense.diagnostics.DiagnosticsUiState
 fun DiagnosticsScreen(
     state: DiagnosticsUiState,
     onRetry: () -> Unit,
+    onBack: () -> Unit,
     onExport: (DeviceDiagnostics) -> Unit
 ) {
     Scaffold(topBar = { TopAppBar(title = { Text("Diagnóstico del dispositivo") }) }) { padding ->
@@ -46,7 +47,7 @@ fun DiagnosticsScreen(
                 Text("Recopilando información…", Modifier.padding(16.dp))
             }
             is DiagnosticsUiState.Error -> ErrorContent(state.message, padding, onRetry)
-            is DiagnosticsUiState.Success -> DiagnosticsContent(state.diagnostics, padding, onExport)
+            is DiagnosticsUiState.Success -> DiagnosticsContent(state.diagnostics, padding, onBack, onExport)
         }
     }
 }
@@ -55,6 +56,7 @@ fun DiagnosticsScreen(
 private fun DiagnosticsContent(
     diagnostics: DeviceDiagnostics,
     padding: PaddingValues,
+    onBack: () -> Unit,
     onExport: (DeviceDiagnostics) -> Unit
 ) {
     LazyColumn(
@@ -62,6 +64,11 @@ private fun DiagnosticsContent(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        item {
+            Button(onClick = onBack, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
+                Text("Volver a captura")
+            }
+        }
         item { SectionTitle("Sistema") }
         item { ValueCard("Fabricante", diagnostics.manufacturer) }
         item { ValueCard("Modelo", diagnostics.model) }

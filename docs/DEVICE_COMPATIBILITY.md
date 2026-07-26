@@ -28,6 +28,21 @@ Un valor ausente se conserva como `null`, `unknown` o `unavailable`, según el
 contexto. Estos datos son inventario declarado por las APIs de Android: no prueban
 captura, full-duplex, latencia, respuesta acústica ni compatibilidad experimental.
 
+## Datos de captura básica
+
+Durante una sesión iniciada por el usuario, la pantalla informa la fuente
+solicitada y la finalmente seleccionada, sample rate real, canales, encoding,
+buffer, estado, muestras y duración. Se solicitan 48.000 Hz, mono y PCM 16. La
+fuente `UNPROCESSED` solo se intenta cuando Android declara soporte y se usa
+`MIC` como fallback; esa declaración no garantiza ausencia total de procesamiento
+del fabricante.
+
+Para promover un modelo a “Captura validada” todavía se requiere un teléfono
+físico: conceder, rechazar y revocar el permiso; comprobar inicio/parada y
+background; observar sesiones prolongadas, llamadas/interrupciones, micrófono
+ocupado y que la configuración mostrada corresponde al hardware. Ningún modelo
+queda validado por esta implementación o por las pruebas JVM.
+
 ## Factores de incompatibilidad
 
 Filtrado agresivo, cancelación de eco, altavoz débil, micrófono filtrado, latencia variable, un canal útil, temperatura y restricciones del fabricante.
