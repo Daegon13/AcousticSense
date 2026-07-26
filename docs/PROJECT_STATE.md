@@ -11,7 +11,11 @@ Fecha base: 25 de julio de 2026.
 - Gradle 8.7.
 - JDK 17 configurado.
 - Estructura documental creada.
-- Próximo paso: auditoría y diagnóstico del dispositivo.
+- Auditoría inicial completada.
+- Pantalla Android de diagnóstico implementada con estados de carga, éxito y error.
+- Recolección de datos de sistema, aplicación y dispositivos de audio declarados por Android.
+- Exportación explícita del diagnóstico como JSON mediante el selector de documentos del sistema.
+- Pruebas unitarias de serialización y formateo agregadas.
 
 ## Todavía no realizado
 
@@ -24,10 +28,12 @@ Fecha base: 25 de julio de 2026.
 - Prueba de pared.
 - Feedback háptico.
 - Validación con usuarios.
+- Validación del diagnóstico en teléfonos físicos.
 
 ## Próximo PR 
 
-`feat/device-diagnostics`
+Validar `feat/device-diagnostics` en Android Studio y al menos un teléfono físico, sin
+considerar el dispositivo acústicamente compatible por este diagnóstico.
 
 Prompt: `prompts/codex/02_device_diagnostics.md`.
 
