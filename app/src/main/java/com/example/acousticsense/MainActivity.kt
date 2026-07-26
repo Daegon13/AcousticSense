@@ -18,6 +18,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.acousticsense.BuildConfig
 import com.example.acousticsense.capture.AndroidAudioCaptureEngine
 import com.example.acousticsense.capture.CaptureViewModel
 import com.example.acousticsense.capture.MicrophonePermissionManager
