@@ -70,7 +70,7 @@ class LaboratorySessionRunner(private val now: () -> Long = System::currentTimeM
                 assertion("input_frames_increased", "> 0", delta.framesRead, delta.framesRead > 0),
                 assertion("output_frames_increased", "> 0", delta.framesWritten, delta.framesWritten > 0),
                 assertion("callbacks_increased", "> 0", delta.callbacks, delta.callbacks > 0),
-                assertion("no_pulses", "0", delta.pulses, delta.pulses == 0),
+                assertion("no_pulses", "0", delta.pulses, delta.pulses == 0L),
                 assertion("minimum_duration", ">= ${definition.minimumDurationMillis}", duration, duration >= definition.minimumDurationMillis),
                 assertion("no_blocking_error", "none", snapshot.lastError, snapshot.lastError.isNullOrBlank())
             )
