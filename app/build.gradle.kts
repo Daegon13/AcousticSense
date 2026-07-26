@@ -19,7 +19,10 @@ android {
             useSupportLibrary = true
         }
         externalNativeBuild {
-            cmake { cppFlags += "-std=c++17" }
+            cmake {
+                arguments += "-DANDROID_STL=c++_shared"
+                cppFlags += "-std=c++17"
+            }
         }
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64") }
     }
@@ -41,6 +44,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
         prefab = true
     }
