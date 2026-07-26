@@ -19,6 +19,13 @@ resultados sintéticos no habilitan por sí solos pruebas de movilidad.
 
 Registrar espectro emitido y grabado, clipping, compresión, ruido, efectos y estabilidad.
 
+La captura básica ya permite observar métricas digitales en vivo sin guardar
+audio: fuente solicitada/seleccionada, configuración real, pico, RMS, dBFS,
+muestras y duración. Antes de estudiar respuesta emitida, verificar en un
+teléfono fijo sesiones de captura, permiso, parada por lifecycle y estabilidad.
+Esta fase no reproduce señales, no exporta PCM y no permite inferir ecos ni
+distancias; por eso no completa todavía este experimento.
+
 ## Experimento 3 — Latencia
 
 Medir distribución del offset entre repeticiones.

@@ -55,6 +55,12 @@ Antes de uso prolongado estudiar volumen, banda, audibilidad, repetición, fatig
 
 El micrófono puede capturar voces. No subir automáticamente, exportar solo mediante acción explícita, informar qué se guarda y permitir borrar sesiones.
 
+En la captura básica, la sesión solo comienza mediante una acción explícita y se
+detiene al salir de la aplicación. Las muestras se procesan en bloques acotados:
+no se guardan, comparten ni exportan. Probar con visión disponible, el teléfono
+fijo y sin capturar conversaciones deliberadamente. El nivel dBFS mostrado es
+digital y no equivale a SPL ni demuestra detección de obstáculos.
+
 ## Usuarios
 
 La validación con personas ciegas debe ocurrir después de gates técnicos y con especialistas en orientación y movilidad.

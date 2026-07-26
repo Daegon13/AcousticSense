@@ -19,12 +19,14 @@ Fecha base: 25 de julio de 2026.
 - Laboratorio Python de DSP sintético agregado: chirp configurable, simulación de
   múltiples ecos y ruido, filtro adaptado, estimación de distancia, métricas,
   gráfica reproducible y pruebas automatizadas.
+- Captura básica Android implementada con permiso en runtime, `AudioRecord`,
+  inicio y parada explícitos, métricas PCM acotadas y cierre por lifecycle.
 
 ## Todavía no realizado
 
 - Motor acústico en Android.
 - Chirp emitido o capturado por hardware real.
-- Grabación funcional.
+- Validación física de la captura en teléfonos reales.
 - C++/NDK/Oboe.
 - Algoritmo de distancia.
 - Calibración.
@@ -35,11 +37,11 @@ Fecha base: 25 de julio de 2026.
 
 ## Próximo PR
 
-Validar el laboratorio sintético y, solo después de mantener los gates, preparar
-la fase de captura básica definida por el plan. La emisión, captura y detección
-acústica en teléfonos siguen sin validación física.
+Validar en teléfonos físicos que la captura básica sea estable y que la
+configuración real coincida con la informada. No avanzar a full-duplex hasta
+completar ese gate; todavía no hay emisión ni detección acústica real.
 
-Prompt actual completado: `prompts/codex/03_synthetic_dsp.md`.
+Prompt actual completado: `prompts/codex/04_microphone_capture.md`.
 
 ## Condición para avanzar habilitada
 
