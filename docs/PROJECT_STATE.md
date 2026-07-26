@@ -73,11 +73,13 @@ deben permanecer exitosos.
 - APK generado en `app/build/outputs/apk/debug/app-debug.apk`.
 - No se realizaron todavía pruebas físicas del subsistema acústico.
 
-## Fase 4 — Full-duplex implementado (pendiente de validación física)
+## Fase 4 — Full-duplex implementado (corrección pendiente de revalidación física)
 
 Se integró Oboe 1.10.0 mediante Prefab, NDK/CMake, C++17 y JNI. El laboratorio
 abre salida e entrada, conserva silencio por defecto, ofrece un pulso explícito
 de 1 kHz/100 ms con amplitud digital 0,08 y exporta solo configuración y métricas.
-La captura básica fue validada en HONOR CRT-LX3/Android 14; el full-duplex aún no.
-El próximo gate es compilar e instalar todas las ABI y completar la batería guiada
-en el dispositivo fijo, sin avanzar a chirp ni ranging.
+En un HONOR CRT-LX3/Android 14 se comprobaron entrada, salida y pulso audible. Esa
+prueba detectó que el motor seguía activo en segundo plano y que la exportación
+consultaba streams ya destruidos. La implementación conserva ahora snapshots
+antes del cierre, detiene en `ON_STOP` y evalúa resultados mediante assertions;
+estos cambios todavía requieren revalidación física. No se habilita chirp ni ranging.

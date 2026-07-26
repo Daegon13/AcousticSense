@@ -52,3 +52,5 @@ La sesión mantiene solo agregados acotados, configuraciones, estados, errores y
 eventos. No conserva PCM, WAV ni muestras individuales. El informe JSON se crea
 únicamente por acción explícita mediante el selector de documentos del sistema;
 no hay guardado automático, telemetría, nube ni permiso de Internet.
+
+El schema 1.1 conserva solo configuración solicitada/negociada, snapshots, agregados por ejecución y prueba, assertions, eventos, motivos y errores. No incluye PCM, WAV, audio codificado, muestras ni datos por callback. Los valores no soportados, incluido `xrunCount = -1`, se exportan como `null`.

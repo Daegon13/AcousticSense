@@ -58,3 +58,5 @@ LowLatency y Exclusive, pero muestra los valores negociados de cada stream y sus
 IDs reales. Para promoverlo a “Full-duplex validado” deben verificarse ambos
 streams Started, pulso único, silencio inicial, sesiones prolongadas, lifecycle,
 rutas, interrupciones y xruns en hardware.
+
+La primera ejecución full-duplex confirmó entrada, salida y pulso audible, pero reveló fallos bloqueantes de lifecycle y evidencia; el modelo no se promueve. La corrección debe revalidar background/bloqueo, ausencia de reinicio, snapshot posterior al cierre y los 300 segundos completos.

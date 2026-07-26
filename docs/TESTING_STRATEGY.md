@@ -44,3 +44,5 @@ El build nativo debe compilar `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`.
 Solo un teléfono permite confirmar API, modos, frecuencia, canales, burst,
 buffers, IDs, preset efectivo, xruns, desconexión, estabilidad y audibilidad.
 La prueba física no debe afirmar que solicitar `Unprocessed` elimina procesamiento.
+
+La regresión JVM de evidencia cubre snapshots posteriores al cierre, contadores y configuración retenidos, parada única en `ON_STOP`, ausencia de reinicio, motivos de parada, assertions por prueba, estabilidad de 300.000 ms abortable, schema 1.1, xruns no soportados como `null` y ausencia de PCM/muestras. Los motores falsos no sustituyen la revalidación física.

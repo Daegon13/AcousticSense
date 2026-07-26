@@ -18,5 +18,5 @@ private:
  std::mutex lifecycleMutex_; std::shared_ptr<oboe::AudioStream> output_, input_;
  std::array<float, 8192> inputBuffer_{}; TestSignal signal_; AudioMetrics metrics_;
  std::atomic<bool> running_{false}, disconnected_{false}, readError_{false}; std::atomic<int32_t> starts_{0}, stops_{0}; std::atomic<int64_t> startedAtMillis_{0}, stoppedAtMillis_{0};
- std::string lastError_, inputPreset_="Unprocessed"; bool outputShared_=false, inputShared_=false;
+ std::string lastError_, inputPreset_="Unprocessed", retainedOutputJson_, retainedInputJson_; bool outputShared_=false, inputShared_=false;
 };

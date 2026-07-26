@@ -68,3 +68,5 @@ volumen bajo y ambiente silencioso: ejecutar en orden `silent_session`,
 el JSON por selector de documentos y registrar build, configuración negociada,
 xruns, frames, callbacks y eventos; nunca PCM. Un fallo no cancela los resultados
 anteriores, pero desconexión detiene los streams y requiere reintento manual.
+
+La estabilidad dura 300.000 ms y no admite aprobación anticipada. El chequeo de lifecycle solo pasa si se observa `APP_BACKGROUND`, el motor queda detenido, ambos streams están cerrados y no hubo reinicio. Una confirmación manual no puede contradecir estas assertions. Abortar queda registrado y no invalida resultados anteriores.
