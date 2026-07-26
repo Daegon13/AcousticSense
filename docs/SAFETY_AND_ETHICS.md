@@ -72,3 +72,5 @@ una senoide audible aproximada de 1 kHz, amplitud digital 0,08 y duración máxi
 aproximada de 100 ms; se cancela al detener y no se repite automáticamente. Esa
 amplitud no es SPL ni garantiza un nivel acústico seguro. Probar con volumen bajo,
 teléfono fijo, visión disponible y sin usar el prototipo como ayuda de movilidad.
+
+La pérdida de primer plano o el bloqueo de pantalla detienen captura y emisión; volver a la aplicación nunca las reinicia. Pérdida de permiso, desconexión u otra interrupción conservan su motivo real y no cuentan como éxito de lifecycle.

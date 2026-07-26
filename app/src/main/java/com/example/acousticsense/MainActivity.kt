@@ -3,6 +3,10 @@ package com.example.acousticsense
 import android.Manifest
 import android.os.Bundle
 import android.os.Build
+import android.app.KeyguardManager
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -16,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.acousticsense.BuildConfig
@@ -31,10 +36,16 @@ import com.example.acousticsense.ui.capture.CaptureScreen
 import com.example.acousticsense.ui.theme.AcousticSenseTheme
 import com.example.acousticsense.duplex.DuplexViewModel
 import com.example.acousticsense.duplex.NativeDuplexEngine
+import com.example.acousticsense.duplex.DuplexLifecycleController
+import com.example.acousticsense.duplex.StopReason
 import com.example.acousticsense.ui.duplex.DuplexScreen
 import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
+    private var duplexLifecycleObserver: LifecycleObserver? = null
+    private var appLifecycleObserver: LifecycleObserver? = null
+    private lateinit var audioManager: AudioManager
+    private lateinit var audioFocusRequest: AudioFocusRequest
     private val duplexViewModel: DuplexViewModel by viewModels {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -56,17 +67,30 @@ class MainActivity : ComponentActivity() {
         val stateHolder = DiagnosticsStateHolder(AndroidDeviceDiagnosticsCollector(this))
         stateHolder.load()
         val permissionManager = MicrophonePermissionManager(this)
+        audioManager = getSystemService(AudioManager::class.java)
+        audioFocusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+            .setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
+            .setOnAudioFocusChangeListener { change ->
+                if (change == AudioManager.AUDIOFOCUS_LOSS || change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
+                    duplexViewModel.stop(StopReason.AUDIO_FOCUS_LOSS)
+                }
+            }.build()
         captureViewModel.updatePermission(permissionManager.currentState())
-        lifecycle.addObserver(LifecycleEventObserver { _, event ->
+        appLifecycleObserver = LifecycleEventObserver { _, event ->
             when (event) {
-                Lifecycle.Event.ON_STOP -> { captureViewModel.stop(); duplexViewModel.stop() }
+                Lifecycle.Event.ON_STOP -> captureViewModel.stop()
                 Lifecycle.Event.ON_RESUME -> {
                     captureViewModel.updatePermission(permissionManager.currentState())
                     duplexViewModel.updatePermission(permissionManager.currentState() == com.example.acousticsense.capture.PermissionState.GRANTED)
                 }
                 else -> Unit
             }
-        })
+        }.also(lifecycle::addObserver)
+        val keyguard = getSystemService(KeyguardManager::class.java)
+        duplexLifecycleObserver = DuplexLifecycleController(
+            isScreenLocked = { keyguard?.isKeyguardLocked == true },
+            stop = { reason -> abandonAudioFocus(); duplexViewModel.stop(reason) }
+        ).also(lifecycle::addObserver)
 
         setContent {
             AcousticSenseTheme {
@@ -92,12 +116,12 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (showDuplex) {
-                    BackHandler { duplexViewModel.stop(); showDuplex = false }
+                    BackHandler { abandonAudioFocus(); duplexViewModel.stop(); showDuplex = false }
                     DuplexScreen(
                         state = duplexViewModel.state,
-                        onBack = { duplexViewModel.stop(); showDuplex = false },
-                        onStart = duplexViewModel::start,
-                        onStop = duplexViewModel::stop,
+                        onBack = { abandonAudioFocus(); duplexViewModel.stop(); showDuplex = false },
+                        onStart = { if (audioManager.requestAudioFocus(audioFocusRequest) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) duplexViewModel.start() },
+                        onStop = { abandonAudioFocus(); duplexViewModel.stop() },
                         onPulse = duplexViewModel::pulse,
                         onRefresh = duplexViewModel::refresh,
                         onBeginGuided = duplexViewModel::beginGuided,
@@ -147,5 +171,18 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        abandonAudioFocus()
+        duplexLifecycleObserver?.let(lifecycle::removeObserver)
+        appLifecycleObserver?.let(lifecycle::removeObserver)
+        duplexLifecycleObserver = null
+        appLifecycleObserver = null
+        super.onDestroy()
+    }
+
+    private fun abandonAudioFocus() {
+        if (::audioManager.isInitialized && ::audioFocusRequest.isInitialized) audioManager.abandonAudioFocusRequest(audioFocusRequest)
     }
 }

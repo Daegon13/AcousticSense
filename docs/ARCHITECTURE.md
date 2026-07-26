@@ -115,3 +115,5 @@ se solicita a la entrada. `Unprocessed` cae explícitamente a `VoiceRecognition`
 El callback reutiliza un buffer fijo, no llama a JNI y no hace I/O. El snapshot
 se consulta fuera del callback. Una sola sesión posee ambos streams y se cierra
 al detener, perder permiso o pasar a segundo plano.
+
+Una única sesión posee ambos streams. Un observer propiedad de la Activity detiene en `ON_STOP`, distingue bloqueo de pantalla y background, y nunca reinicia al regresar. Se conservan la configuración solicitada, la negociada y las métricas al inicio/fin de cada prueba. El snapshot posterior al cierre reutiliza esos valores y nunca consulta un stream destruido.

@@ -62,3 +62,7 @@ No es chirp, no se repite, no representa SPL seguro y no se usa para ranging.
 
 Aceptada una batería secuencial sobre una sola sesión full-duplex. Los chequeos
 externos admiten confirmación manual y el JSON contiene agregados, nunca audio.
+
+## ADR-014 — Evidencia inmutable antes del cierre
+
+Aceptada. La configuración real y las métricas se capturan mientras los streams siguen válidos y se reutilizan tras el cierre. Assertions observables deciden resultados; una confirmación manual no convierte un fallo en aprobación. El informe evoluciona a schema 1.1.
