@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Experimental audio captures must remain local.
+*.wav
+*.pcm
