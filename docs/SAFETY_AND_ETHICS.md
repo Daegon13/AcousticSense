@@ -74,3 +74,7 @@ amplitud no es SPL ni garantiza un nivel acústico seguro. Probar con volumen ba
 teléfono fijo, visión disponible y sin usar el prototipo como ayuda de movilidad.
 
 La pérdida de primer plano o el bloqueo de pantalla detienen captura y emisión; volver a la aplicación nunca las reinicia. Pérdida de permiso, desconexión u otra interrupción conservan su motivo real y no cuentan como éxito de lifecycle.
+
+## Chirp audible de laboratorio
+
+El perfil inicial barre 4–12 kHz durante 10 ms con Hann y amplitud digital máxima 0,05. Es audible, no es SPL y no se denomina ultrasónico. Solo se inicia por acción explícita, nunca al abrir, conceder permiso, iniciar streams, restaurar, volver a foreground o recuperarse de un error. Mantener volumen bajo y personas y mascotas lejos del altavoz.

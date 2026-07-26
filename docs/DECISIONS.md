@@ -66,3 +66,7 @@ externos admiten confirmación manual y el JSON contiene agregados, nunca audio.
 ## ADR-014 — Evidencia inmutable antes del cierre
 
 Aceptada. La configuración real y las métricas se capturan mientras los streams siguen válidos y se reutilizan tras el cierre. Assertions observables deciden resultados; una confirmación manual no convierte un fallo en aprobación. El informe evoluciona a schema 1.1.
+
+## ADR-015 — ZIP con ventanas y referencias concatenadas
+
+Aceptada para fase 5 una exportación explícita SAF con JSON schema 2.0, CSV de una fila por emisión, un WAV PCM16 que concatena ventanas de entrada y otro que concatena las referencias digitales exactas. Cada emisión registra offsets. Reduce cantidad de archivos sin reconstruir señales; no presupone sincronía de relojes.

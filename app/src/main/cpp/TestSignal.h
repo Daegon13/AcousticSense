@@ -11,6 +11,6 @@ public:
 private:
     std::atomic<int32_t> remaining_{0};
     int32_t durationFrames_{0};
-    float phase_{0.0F};
-    float phaseStep_{0.0F};
+    int32_t sampleRate_{0};
+    int32_t position_{0};
 };

@@ -54,3 +54,7 @@ eventos. No conserva PCM, WAV ni muestras individuales. El informe JSON se crea
 no hay guardado automático, telemetría, nube ni permiso de Internet.
 
 El schema 1.1 conserva solo configuración solicitada/negociada, snapshots, agregados por ejecución y prueba, assertions, eventos, motivos y errores. No incluye PCM, WAV, audio codificado, muestras ni datos por callback. Los valores no soportados, incluido `xrunCount = -1`, se exportan como `null`.
+
+## Ventanas exportables de fase 5
+
+Cada acción puede conservar solamente 50 ms de pre-roll, el chirp de 10 ms y 250 ms de post-roll, dentro de buffers con máximo definido. La estrategia de exportación concatena ventanas en `input-capture.wav` y referencias exactas en `transmitted-reference.wav`; los offsets se documentan por emisión. El ZIP se escribe solo tras elegir destino con SAF, sin permiso general de almacenamiento, Internet, telemetría, nube ni PCM en JSON. Cancelar o descartar debe liberar buffers; un fallo de exportación no debe destruir la sesión en memoria.
