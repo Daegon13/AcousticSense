@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Raw experimental captures and exports must remain local.
+/test-data/recordings/**
+!/test-data/recordings/.gitkeep
+/experiment-output/
+/exports/

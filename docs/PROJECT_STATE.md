@@ -25,13 +25,13 @@ Fecha base: 25 de julio de 2026.
 - Feedback háptico.
 - Validación con usuarios.
 
-## Próximo PR
+## Próximo PR 
 
 `feat/device-diagnostics`
 
 Prompt: `prompts/codex/02_device_diagnostics.md`.
 
-## Condición para avanzar
+## Condición para avanzar habilitada
 
 ```powershell
 .\gradlew.bat test
@@ -40,3 +40,23 @@ Prompt: `prompts/codex/02_device_diagnostics.md`.
 ```
 
 deben permanecer exitosos.
+
+
+## Validación
+
+### Entorno de Codex
+
+- JDK 17 disponible.
+- Android SDK no disponible.
+- El wrapper no pudo descargar Gradle 8.7 porque el proxy respondió HTTP 403.
+- `test`, `lint` y `assembleDebug` no se consideran ejecutados en ese entorno.
+
+### Entorno local Windows
+
+- Android Studio y Android SDK configurados.
+- Gradle ejecutado con JDK 17.
+- `.\gradlew.bat test`: exitoso.
+- `.\gradlew.bat lint`: exitoso.
+- `.\gradlew.bat assembleDebug`: exitoso.
+- APK generado en `app/build/outputs/apk/debug/app-debug.apk`.
+- No se realizaron todavía pruebas físicas del subsistema acústico.
