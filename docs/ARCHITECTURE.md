@@ -99,3 +99,19 @@ Puede contener sample rate, burst, canales, orientación, volumen, offset, banda
 ## Decisiones diferidas
 
 Banda final, repetición, FFT o correlación, distancia o zonas, número de micrófonos y módulos físicos.
+
+## Laboratorio full-duplex (fase 4)
+
+```text
+DuplexScreen → DuplexViewModel → DuplexEngine → NativeDuplexEngine/JNI
+                                              → DuplexEngine C++
+output callback maestro → input.read(timeout=0) → agregados atómicos
+                       ↘ silencio / TestSignal acotada
+LaboratorySessionRunner → batería secuencial → SessionJsonSerializer
+```
+
+La salida se abre primero en Exclusive y cae a Shared; su frecuencia negociada
+se solicita a la entrada. `Unprocessed` cae explícitamente a `VoiceRecognition`.
+El callback reutiliza un buffer fijo, no llama a JNI y no hace I/O. El snapshot
+se consulta fuera del callback. Una sola sesión posee ambos streams y se cierra
+al detener, perder permiso o pasar a segundo plano.

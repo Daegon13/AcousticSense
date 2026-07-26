@@ -45,3 +45,10 @@ pixel7_roomA_wall_100cm_run03
 ```
 
 Exportar solo con confirmación explícita.
+
+## Informes de laboratorio full-duplex
+
+La sesión mantiene solo agregados acotados, configuraciones, estados, errores y
+eventos. No conserva PCM, WAV ni muestras individuales. El informe JSON se crea
+únicamente por acción explícita mediante el selector de documentos del sistema;
+no hay guardado automático, telemetría, nube ni permiso de Internet.

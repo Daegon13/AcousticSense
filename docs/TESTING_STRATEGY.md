@@ -35,3 +35,12 @@ TalkBack, foco, etiquetas, controles, contraste, mensajes y vibraciones.
 - “compila en la nube”;
 - una sola medición;
 - una gráfica sin métrica.
+
+## Pruebas de fase full-duplex
+
+Las pruebas JVM cubren permiso, idempotencia, error de apertura, estado, pulso,
+orden secuencial, cancelación, resultado inconcluso, resumen y JSON sin audio.
+El build nativo debe compilar `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`.
+Solo un teléfono permite confirmar API, modos, frecuencia, canales, burst,
+buffers, IDs, preset efectivo, xruns, desconexión, estabilidad y audibilidad.
+La prueba física no debe afirmar que solicitar `Unprocessed` elimina procesamiento.
