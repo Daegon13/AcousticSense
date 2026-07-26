@@ -40,7 +40,8 @@ fun CaptureScreen(
     onOpenSettings: () -> Unit,
     onStart: () -> Unit,
     onStop: () -> Unit,
-    onShowDiagnostics: () -> Unit
+    onShowDiagnostics: () -> Unit,
+    onShowDuplex: () -> Unit
 ) {
     Scaffold(topBar = { TopAppBar(title = { Text("Captura de micrófono") }) }) { padding ->
         LazyColumn(
@@ -48,6 +49,11 @@ fun CaptureScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            item {
+                OutlinedButton(onClick = onShowDuplex, modifier = actionModifier("Abrir laboratorio full-duplex experimental")) {
+                    Text("Laboratorio full-duplex")
+                }
+            }
             item {
                 Text("Captura básica controlada", style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.semantics { heading() })

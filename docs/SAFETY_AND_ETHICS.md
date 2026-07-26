@@ -64,3 +64,11 @@ digital y no equivale a SPL ni demuestra detección de obstáculos.
 ## Usuarios
 
 La validación con personas ciegas debe ocurrir después de gates técnicos y con especialistas en orientación y movilidad.
+
+## Pulso de validación full-duplex
+
+La salida permanece silenciosa hasta la acción explícita. El único estímulo es
+una senoide audible aproximada de 1 kHz, amplitud digital 0,08 y duración máxima
+aproximada de 100 ms; se cancela al detener y no se repite automáticamente. Esa
+amplitud no es SPL ni garantiza un nivel acústico seguro. Probar con volumen bajo,
+teléfono fijo, visión disponible y sin usar el prototipo como ayuda de movilidad.

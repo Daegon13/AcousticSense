@@ -72,3 +72,12 @@ deben permanecer exitosos.
 - `.\gradlew.bat assembleDebug`: exitoso.
 - APK generado en `app/build/outputs/apk/debug/app-debug.apk`.
 - No se realizaron todavía pruebas físicas del subsistema acústico.
+
+## Fase 4 — Full-duplex implementado (pendiente de validación física)
+
+Se integró Oboe 1.10.0 mediante Prefab, NDK/CMake, C++17 y JNI. El laboratorio
+abre salida e entrada, conserva silencio por defecto, ofrece un pulso explícito
+de 1 kHz/100 ms con amplitud digital 0,08 y exporta solo configuración y métricas.
+La captura básica fue validada en HONOR CRT-LX3/Android 14; el full-duplex aún no.
+El próximo gate es compilar e instalar todas las ABI y completar la batería guiada
+en el dispositivo fijo, sin avanzar a chirp ni ranging.

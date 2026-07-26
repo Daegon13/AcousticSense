@@ -48,3 +48,13 @@ queda validado por esta implementación o por las pruebas JVM.
 Filtrado agresivo, cancelación de eco, altavoz débil, micrófono filtrado, latencia variable, un canal útil, temperatura y restricciones del fabricante.
 
 No usar “compatible con Android” como afirmación global. Publicar lista explícita de dispositivos probados.
+
+## Gate full-duplex
+
+El HONOR CRT-LX3 (Android 14, SDK 34, ABI principal arm64-v8a) tiene captura básica
+validada. Sus valores diagnosticados de 48 kHz, 256 frames y hasta dos canales son
+expectativas, no constantes. El laboratorio solicita mono, frecuencia natural,
+LowLatency y Exclusive, pero muestra los valores negociados de cada stream y sus
+IDs reales. Para promoverlo a “Full-duplex validado” deben verificarse ambos
+streams Started, pulso único, silencio inicial, sesiones prolongadas, lifecycle,
+rutas, interrupciones y xruns en hardware.

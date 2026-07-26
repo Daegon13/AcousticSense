@@ -138,3 +138,9 @@ Incluye Android, uno a tres modelos validados, calibración, sensor frontal, dis
 Tiempo acumulado orientativo: 10 a 16 semanas a tiempo parcial.
 
 El comportamiento del hardware domina el cronograma.
+
+### Estado de fase 4
+
+Implementación de Oboe/JNI, silencio, pulso audible limitado, métricas y sesiones
+guiadas completada en código. El gate de varios minutos y los cambios de ruta
+siguen pendientes de teléfono físico; no habilita la fase 5.

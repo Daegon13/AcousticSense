@@ -58,3 +58,13 @@ Invalidar si:
 - el commit no está identificado.
 
 Después de pared, registrar en `DECISIONS.md` si se continúa, reformula, restringe, rediseña o detiene.
+
+## Protocolo full-duplex previo a latencia
+
+Con teléfono apoyado, visión disponible, Bluetooth/auriculares desconectados,
+volumen bajo y ambiente silencioso: ejecutar en orden `silent_session`,
+`audible_pulse`, `repeated_start_stop`, `stability_session` y
+`lifecycle_manual_check`. Las acciones externas se confirman manualmente. Exportar
+el JSON por selector de documentos y registrar build, configuración negociada,
+xruns, frames, callbacks y eventos; nunca PCM. Un fallo no cancela los resultados
+anteriores, pero desconexión detiene los streams y requiere reintento manual.
