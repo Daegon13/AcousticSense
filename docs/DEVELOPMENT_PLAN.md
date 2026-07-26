@@ -144,3 +144,7 @@ El comportamiento del hardware domina el cronograma.
 Implementación de Oboe/JNI, silencio, pulso audible limitado, métricas y sesiones
 guiadas completada en código. El gate de varios minutos y los cambios de ruta
 siguen pendientes de teléfono físico; no habilita la fase 5.
+
+### Estado de fase 5
+
+El generador, límites de repetición y formato de evidencia están implementados para revisión. El gate sigue siendo observar cada chirp repetidamente en ventanas exportadas de un teléfono fijo; no habilita calibración antes de esa validación.

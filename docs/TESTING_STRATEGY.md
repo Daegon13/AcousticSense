@@ -46,3 +46,7 @@ buffers, IDs, preset efectivo, xruns, desconexión, estabilidad y audibilidad.
 La prueba física no debe afirmar que solicitar `Unprocessed` elimina procesamiento.
 
 La regresión JVM de evidencia cubre snapshots posteriores al cierre, contadores y configuración retenidos, parada única en `ON_STOP`, ausencia de reinicio, motivos de parada, assertions por prueba, estabilidad de 300.000 ms abortable, schema 1.1, xruns no soportados como `null` y ausencia de PCM/muestras. Los motores falsos no sustituyen la revalidación física.
+
+## Pruebas de fase chirp/exportación
+
+Las pruebas JVM cubren frames exactos, validación Nyquist/amplitud/duración, Hann, finitud, serie limitada/cancelable, PCM16, RIFF/WAV, CSV escapado, JSON sin PCM y contenido ZIP. La prueba C++ cubre silencio predeterminado, chirp único de 480 frames a 48 kHz y amplitud máxima. Quedan pendientes dispositivo, rutas, audio focus, captura real y audición segura; ninguna prueba automatizada demuestra sincronía física.

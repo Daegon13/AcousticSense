@@ -70,3 +70,7 @@ xruns, frames, callbacks y eventos; nunca PCM. Un fallo no cancela los resultado
 anteriores, pero desconexión detiene los streams y requiere reintento manual.
 
 La estabilidad dura 300.000 ms y no admite aprobación anticipada. El chequeo de lifecycle solo pasa si se observa `APP_BACKGROUND`, el motor queda detenido, ambos streams están cerrados y no hubo reinicio. Una confirmación manual no puede contradecir estas assertions. Abortar queda registrado y no invalida resultados anteriores.
+
+## Protocolo de chirp y captura acotada
+
+Teléfono fijo, visión disponible, ambiente silencioso, volumen bajo, Bluetooth apagado, auriculares desconectados y sin hablar: iniciar streams, revisar 4–12 kHz/10 ms/Hann/0,05, emitir manualmente y exportar explícitamente. La ventana objetivo es 50 ms de pre-roll y 250 ms de post-roll. Registrar frames y timestamps crudos; no tratarlos como relojes sincronizados ni convertirlos en distancia.

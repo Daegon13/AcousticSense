@@ -9,13 +9,13 @@ int main() {
     signal.trigger();
     int nonSilent = 0;
     float maximum = 0.0F;
-    for (int i = 0; i < 4800; ++i) {
+    for (int i = 0; i < 480; ++i) {
         const float value = signal.next();
         maximum = std::max(maximum, std::abs(value));
         if (value != 0.0F) ++nonSilent;
     }
     assert(nonSilent > 0);
-    assert(maximum <= 0.08001F);
+    assert(maximum <= 0.05001F);
     assert(!signal.active());
     assert(signal.next() == 0.0F); // exactly one bounded pulse
 }

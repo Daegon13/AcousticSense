@@ -30,3 +30,7 @@ Entre 0,50 y 2,50 m:
 Usar matriz de confusión para lejos, medio, cerca y crítico. Los límites se deciden con datos reales.
 
 La confianza debe correlacionarse con error; no usar porcentajes arbitrarios.
+
+## Gate de chirp y captura
+
+Por emisión registrar peak, RMS, dBFS, mínimo, máximo, media, muestras, clipping, frames esperados/reales, interrupciones y xruns. Aceptar esta fase solo si el chirp aparece repetiblemente en la captura exportada, sin overflow ni clipping relevante y con metadatos completos. dBFS es nivel digital, no SPL; no se evalúa eco ni distancia.

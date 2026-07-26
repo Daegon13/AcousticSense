@@ -60,3 +60,7 @@ streams Started, pulso único, silencio inicial, sesiones prolongadas, lifecycle
 rutas, interrupciones y xruns en hardware.
 
 La primera ejecución full-duplex confirmó entrada, salida y pulso audible, pero reveló fallos bloqueantes de lifecycle y evidencia; el modelo no se promueve. La corrección debe revalidar background/bloqueo, ausencia de reinicio, snapshot posterior al cierre y los 300 segundos completos.
+
+## Gate de señal física
+
+El HONOR CRT-LX3/Android 14 tiene full-duplex revalidado según la evidencia informada, pero todavía debe validar el chirp 4–12 kHz y la ventana exportada: frames reales, canal/sample rate, clipping, xruns, rutas, background y audio focus. Los timestamps de ambos streams se registran como datos crudos y no prueban sincronía ni distancia.

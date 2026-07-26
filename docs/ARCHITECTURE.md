@@ -117,3 +117,7 @@ se consulta fuera del callback. Una sola sesión posee ambos streams y se cierra
 al detener, perder permiso o pasar a segundo plano.
 
 Una única sesión posee ambos streams. Un observer propiedad de la Activity detiene en `ON_STOP`, distingue bloqueo de pantalla y background, y nunca reinicia al regresar. Se conservan la configuración solicitada, la negociada y las métricas al inicio/fin de cada prueba. El snapshot posterior al cierre reutiliza esos valores y nunca consulta un stream destruido.
+
+## Fase 5 — señal y artefactos reproducibles
+
+`ChirpGenerator` está separado del stream y produce una referencia Float exacta con barrido lineal, Hann y cantidad de frames derivada del sample rate real. `ChirpSchedule` limita toda serie a 1–5 acciones y 1000 ms como mínimo. Los modelos `ChirpEmission` y `SignalSessionSnapshot` conservan posiciones y timestamps crudos sin suponer sincronía entre los relojes de entrada y salida. `SignalSessionExport` convierte fuera del callback a WAV PCM16, CSV por emisión, JSON schema 2.0 sin PCM y ZIP mediante SAF. La estrategia elegida es un WAV concatenado para todas las ventanas y otro para las referencias, con offsets por emisión.

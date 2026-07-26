@@ -83,3 +83,7 @@ prueba detectó que el motor seguía activo en segundo plano y que la exportaci�
 consultaba streams ya destruidos. La implementación conserva ahora snapshots
 antes del cierre, detiene en `ON_STOP` y evalúa resultados mediante assertions;
 estos cambios todavía requieren revalidación física. No se habilita chirp ni ranging.
+
+## Fase 5 — chirp y exportación (implementación pendiente de validación física)
+
+Se incorporó el perfil audible de laboratorio 4–12 kHz, 10 ms, Hann y amplitud digital máxima 0,05, silencioso hasta una acción explícita. Se agregaron modelos de sesión/emisión, serie acotada y codificadores reproducibles WAV/CSV/JSON/ZIP. La verificación de captura física acotada y la asociación temporal input/output queda pendiente en teléfono; no se calcula distancia ni se interpreta eco.
